@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -31,6 +32,9 @@ public class User {
 
   private String UPDATED_BY;
 
+  //User 1 : N
+  @OneToMany( fetch = FetchType.LAZY, mappedBy = "user" )  // <= OrderDeatil 의 User user
+  private List<OrderDetail> orderDetailList;
 //  public User() {
 //
 //  }
