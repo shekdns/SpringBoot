@@ -4,29 +4,35 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
-import java.util.List;
 
-@Data
-@AllArgsConstructor
 @NoArgsConstructor
-@Entity  // == table
-public class User {
+@AllArgsConstructor
+@Data
+@Entity
+public class Partner {
 
   @Id
-  @GeneratedValue( strategy = GenerationType.IDENTITY )
-  private int ID;
+  @GeneratedValue( strategy = GenerationType.IDENTITY )  //mysql
+  private Long id;
 
-  private String account;
-
-  private String password;
+  private String name;
 
   private String status;
 
-  private String email;
+  private String address;
+
+  private String callCenter;
 
   private String phoneNumber;
+
+  private String businessNumber;
+
+  private String ceoName;
 
   private LocalDateTime registeredAt;
 
@@ -39,11 +45,4 @@ public class User {
   private LocalDateTime updatedAt;
 
   private String updatedBy;
-
-  //User 1 : N
-//  @OneToMany( fetch = FetchType.LAZY, mappedBy = "user" )  // <= OrderDeatil 의 User user
-//  private List<OrderDetail> orderDetailList;
-//  public User() {
-//
-//  }
 }

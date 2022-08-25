@@ -17,25 +17,28 @@ public class UserRepositoryTest extends StudyApplicationTests {
   @Autowired
   private UserRepository userRepository;
 
-  @Test
-  public void create() {
-    // String sql = insert into user ( ~~~~ ) value ( ~~~~ );
-    User user = new User(); // 싱글톤패턴
-
-    user.setACCOUNT( "TestUser03" );
-    user.setEMAIL( "TestUser03@gmail.com" );
-    user.setPHONE_NUMBER( "010-3333-3333" );
-    user.setCREATED_BY( "TestUser03" );
-    user.setCREATED_DATE( LocalDateTime.now() );
-
-    User newUser = userRepository.save( user );
-    System.out.println( "newUser = " + newUser );
-  }
+//  @Test
+//  public void create() {
+//    // String sql = insert into user ( ~~~~ ) value ( ~~~~ );
+//    User user = new User(); // 싱글톤패턴
+//
+//    user.setACCOUNT( "TestUser03" );
+//    user.setEMAIL( "TestUser03@gmail.com" );
+//    user.setPHONE_NUMBER( "010-3333-3333" );
+//    user.setCREATED_BY( "TestUser03" );
+//    user.setCREATED_DATE( LocalDateTime.now() );
+//
+//    User newUser = userRepository.save( user );
+//    System.out.println( "newUser = " + newUser );
+//  }
 
   @Test
   @Transactional
   public void read() {
-    Optional<User> user = userRepository.findById(3);
+
+    //select * from user where id = ?
+    //Optional<User> user = userRepository.findById(3);
+    Optional<User> user = userRepository.findByACCOUNT( "TestUser03" );
 
     user.ifPresent( selectUser -> {
       selectUser.getOrderDetailList().stream().forEach( detail -> {
@@ -48,18 +51,18 @@ public class UserRepositoryTest extends StudyApplicationTests {
     });
   }
 
-  @Test
-  public void update() {
-    Optional<User> user = userRepository.findById(2);
-
-    user.ifPresent( selectUser -> {
-      selectUser.setACCOUNT( "PPPP" );
-      selectUser.setUPDATED_DATE( LocalDateTime.now() );
-      selectUser.setUPDATED_BY( "update method()" );
-
-      userRepository.save( selectUser );
-    });
-  }
+//  @Test
+//  public void update() {
+//    Optional<User> user = userRepository.findById(2);
+//
+//    user.ifPresent( selectUser -> {
+//      selectUser.setACCOUNT( "PPPP" );
+//      selectUser.setUPDATED_DATE( LocalDateTime.now() );
+//      selectUser.setUPDATED_BY( "update method()" );
+//
+//      userRepository.save( selectUser );
+//    });
+//  }
 
   @Test
   public void  delete() {
