@@ -17,8 +17,30 @@ public class UserRepositoryTest extends StudyApplicationTests {
   @Autowired
   private UserRepository userRepository;
 
-//  @Test
-//  public void create() {
+  @Test
+  public void create() {
+    String account  = "Test01";
+    String password = "Test01";
+    String status   = "REGISTERED";
+    String email    = "Test01@gmail.com";
+    String phoneNumber = "010-1111-2222";
+    LocalDateTime registeredAt = LocalDateTime.now();
+    LocalDateTime createdAt    = LocalDateTime.now();
+    String createdBy = "AdminServer";
+
+    User user = new User();
+    user.setAccount( account );
+    user.setPassword( password );
+    user.setStatus( status );
+    user.setEmail( email );
+    user.setPhoneNumber( phoneNumber );
+    user.setRegisteredAt( registeredAt );
+    user.setCreatedAt( createdAt );
+    user.setCreatedBy( createdBy );
+
+    User newUser = userRepository.save( user );
+    Assert.assertNotNull( newUser );
+
 //    // String sql = insert into user ( ~~~~ ) value ( ~~~~ );
 //    User user = new User(); // 싱글톤패턴
 //
@@ -30,25 +52,28 @@ public class UserRepositoryTest extends StudyApplicationTests {
 //
 //    User newUser = userRepository.save( user );
 //    System.out.println( "newUser = " + newUser );
-//  }
+  }
 
   @Test
   @Transactional
   public void read() {
 
+    User user = userRepository.findFirstByPhoneNumberOrderByIDDesc( "010-1111-22223" );
+    Assert.assertNotNull( user );
+
     //select * from user where id = ?
     //Optional<User> user = userRepository.findById(3);
-    Optional<User> user = userRepository.findByACCOUNT( "TestUser03" );
-
-    user.ifPresent( selectUser -> {
-      selectUser.getOrderDetailList().stream().forEach( detail -> {
-        //System.out.println( detail.getItemId() );
-        Item item = detail.getItem();
-        System.out.println( item );
-      });
-      //System.out.println( "user  : " + selectUser );
-      //System.out.println( "emial : " + selectUser.getEMAIL() );
-    });
+//    Optional<User> user = userRepository.findByACCOUNT( "TestUser03" );
+//
+//    user.ifPresent( selectUser -> {
+//      selectUser.getOrderDetailList().stream().forEach( detail -> {
+//        //System.out.println( detail.getItemId() );
+//        Item item = detail.getItem();
+//        System.out.println( item );
+//      });
+//      System.out.println( "user  : " + selectUser );
+//      System.out.println( "emial : " + selectUser.getEMAIL() );
+//    });
   }
 
 //  @Test
@@ -66,17 +91,17 @@ public class UserRepositoryTest extends StudyApplicationTests {
 
   @Test
   public void  delete() {
-    Optional<User> user = userRepository.findById(1);
-
-    Assert.assertTrue( user.isPresent() ); //true  -> DB에 있는 데이터가 잇는지 판별 잇다면 true / false면 에러
-
-    user.ifPresent( selectUser -> {
-      userRepository.delete( selectUser );
-    });
-
-    Optional<User> deleteUser = userRepository.findById(2);
-
-    Assert.assertFalse( deleteUser.isPresent() ); //false DB에 있는 데이터가 없는지 판별 없다면 false / true면 에러
+//    Optional<User> user = userRepository.findById(1);
+//
+//    Assert.assertTrue( user.isPresent() ); //true  -> DB에 있는 데이터가 잇는지 판별 잇다면 true / false면 에러
+//
+//    user.ifPresent( selectUser -> {
+//      userRepository.delete( selectUser );
+//    });
+//
+//    Optional<User> deleteUser = userRepository.findById(2);
+//
+//    Assert.assertFalse( deleteUser.isPresent() ); //false DB에 있는 데이터가 없는지 판별 없다면 false / true면 에러
 
 //    if( deleteUser.isPresent() ) {
 //      System.out.println( "데이터 존재 : " + deleteUser.get() );

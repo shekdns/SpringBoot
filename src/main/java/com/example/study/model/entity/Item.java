@@ -41,6 +41,8 @@ public class Item {
   private LocalDateTime updatedAt;
 
   private String updatedBy;
+
+  private Long partnerId;
   // 1 : N
   // Fetch Type 은 2개의 종료 LAZY = 지연로딩 / EAGER = 즉시로딩
   // 즉 LAZY = SELECT * FROM item WHERE id = ?

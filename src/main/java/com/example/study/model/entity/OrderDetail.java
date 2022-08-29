@@ -29,8 +29,6 @@ public class OrderDetail {
 
   private BigDecimal totalPrice;
 
-  private LocalDateTime orderAt;
-
   private LocalDateTime createdAt;
 
   private String createdBy;
@@ -38,6 +36,10 @@ public class OrderDetail {
   private LocalDateTime updatedAt;
 
   private String updatedBy;
+
+  private Long itemId;
+
+  private Long orderGroupId;
 //  // N : 1  연관관계는 반듯이 객체 관계계
 //  @ManyToOne
 //  private User user;
