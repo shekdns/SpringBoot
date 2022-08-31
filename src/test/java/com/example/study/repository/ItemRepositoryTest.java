@@ -30,7 +30,7 @@ public class ItemRepositoryTest extends StudyApplicationTests {
     item.setRegisteredAt( registeredAt );
     item.setCreatedAt( createdAt );
     item.setCreatedBy( createdBy );
-    item.setPartnerId( 1L );
+    //item.setPartnerId( 1L );  Long -> Partner
 
     Item newItem = itemRepository.save( item  );
     Assert.assertNotNull( newItem );
