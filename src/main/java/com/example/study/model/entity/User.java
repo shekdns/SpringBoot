@@ -24,7 +24,7 @@ public class User {
 
   @Id
   @GeneratedValue( strategy = GenerationType.IDENTITY )
-  private int ID;
+  private Long id;
 
   private String account;
 

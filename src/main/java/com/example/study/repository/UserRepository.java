@@ -9,7 +9,11 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-  User findFirstByPhoneNumberOrderByIDDesc( String phoneNumber );
+  //User findFirstByPhoneNumberOrderByIDDesc( String phoneNumber );
+
+  Optional<User> findById( Long id );
+
+  Optional<User> findFirstByPhoneNumberOrderByIdDesc( String phoneNumber );
 
   //  //쿼리 메소드 처음 공부
 //  //select * from user where account = ?
