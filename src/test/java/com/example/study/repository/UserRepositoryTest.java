@@ -65,33 +65,33 @@ public class UserRepositoryTest extends StudyApplicationTests {
   @Transactional
   public void read() {
 
-    User user = userRepository.findFirstByPhoneNumberOrderByIDDesc( "010-1111-2222" );
+    //User user = userRepository.findFirstByPhoneNumberOrderByIDDesc( "010-1111-2222" );
 
     //Accessors.chain
     //User uu = new User().setAccount().setEmail().setPassword(); 체인패턴  업데이트를 칠때
 
-    if( user != null ) {
-      user.getOrderGroupList().stream().forEach( orderGroup -> {
-        System.out.println( "====================주문묶음====================" );
-        System.out.println( orderGroup.getTotalPrice() );
-        System.out.println( orderGroup.getRevAddress() );
-        System.out.println( orderGroup.getRevName() );
-
-        System.out.println( "====================주문상세====================" );
-
-        orderGroup.getOrderDetailList().forEach( orderDetail -> {
-          System.out.println( orderDetail.getStatus() );
-          System.out.println( orderDetail.getArrivalDate() );
-          System.out.println( "파트너사 이름 : " + orderDetail.getItem().getPartner().getName() );
-          System.out.println( "파트너사 카테고리 : " + orderDetail.getItem().getPartner().getCategory().getTitle() );
-          System.out.println( "주문 상품 : " + orderDetail.getItem().getName() );
-          System.out.println( "콜센터    : " + orderDetail.getItem().getPartner().getCallCenter() );
-        });
-
-      });
-    }
-
-    Assert.assertNotNull( user );
+//    if( user != null ) {
+//      user.getOrderGroupList().stream().forEach( orderGroup -> {
+//        System.out.println( "====================주문묶음====================" );
+//        System.out.println( orderGroup.getTotalPrice() );
+//        System.out.println( orderGroup.getRevAddress() );
+//        System.out.println( orderGroup.getRevName() );
+//
+//        System.out.println( "====================주문상세====================" );
+//
+//        orderGroup.getOrderDetailList().forEach( orderDetail -> {
+//          System.out.println( orderDetail.getStatus() );
+//          System.out.println( orderDetail.getArrivalDate() );
+//          System.out.println( "파트너사 이름 : " + orderDetail.getItem().getPartner().getName() );
+//          System.out.println( "파트너사 카테고리 : " + orderDetail.getItem().getPartner().getCategory().getTitle() );
+//          System.out.println( "주문 상품 : " + orderDetail.getItem().getName() );
+//          System.out.println( "콜센터    : " + orderDetail.getItem().getPartner().getCallCenter() );
+//        });
+//
+//      });
+//    }
+//
+//    Assert.assertNotNull( user );
 
     //select * from user where id = ?
     //Optional<User> user = userRepository.findById(3);
