@@ -13,14 +13,15 @@ repositories {
 }
 
 dependencies {
+    compileClasspath('org.springframework.boot:spring-boot-starter-thymeleaf')
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'mysql:mysql-connector-java'
     implementation 'junit:junit:4.13.1'
+    implementation 'org.projectlombok:lombok:1.18.22'
     //compileClasspath( 'mysql:mysql-connector-java' )
     compileClasspath( 'org.projectlombok:lombok:1.18.24' )
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    //implementation 'org.projectlombok:lombok:1.18.24'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

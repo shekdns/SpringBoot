@@ -25,6 +25,8 @@ public class Header<T> {
   private String description;
   // 제네릭 데이터
   private T data;
+  //페이징
+  private Pagination pagination;
 
   // OK
   public static <T> Header<T> OK() {
@@ -34,6 +36,11 @@ public class Header<T> {
   public static <T> Header<T> OK( T data ) {
     return (Header<T>) Header.builder().transactionTime( LocalDateTime.now() ).resultCode( "OK" ).description( "OK" ).data( data ).build();
   }
+
+  public static <T> Header<T> OK( T data, Pagination pagination ) {
+    return (Header<T>) Header.builder().transactionTime( LocalDateTime.now() ).resultCode( "OK" ).description( "OK" ).data( data ).pagination( pagination ).build();
+  }
+
   // ERROR
   public static <T> Header<T> ERROR( String description ) {
     return (Header<T>) Header.builder().transactionTime( LocalDateTime.now() ).resultCode( "ERROR" ).description( description ).build();
